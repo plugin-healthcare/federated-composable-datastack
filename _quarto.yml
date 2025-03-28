@@ -3,4 +3,5 @@ project:
 
 formats:
   ieee-pdf: default
-  ieee-html: default
+  ieee-html:
+    toc: true
