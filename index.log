@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2025.3.28)  28 MAR 2025 20:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2025.3.28)  28 MAR 2025 20:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**federated-composable-datastack.tex
-(./federated-composable-datastack.tex
+**index.tex
+(./index.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-05-04> (/Users/dkapitan/Library/TinyTeX/texmf-dist/tex/latex/ieeetran/IEEEtran.cls
 Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
@@ -322,12 +322,12 @@ Enter file name:
 l.157 \usepackage
                  [version=3]{mhchem}^^M 
 Here is how much of TeX's memory you used:
- 6341 strings out of 480240
- 100888 string characters out of 5892526
- 452194 words of memory out of 5000000
+ 6340 strings out of 480240
+ 100783 string characters out of 5892526
+ 452119 words of memory out of 5000000
  24248 multiletter control sequences out of 15000+600000
  491973 words of font info for 69 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 55i,1n,62p,393b,152s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 55i,1n,62p,368b,152s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 !  ==> Fatal error occurred, no output PDF file produced!
