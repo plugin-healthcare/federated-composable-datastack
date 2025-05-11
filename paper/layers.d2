@@ -10,38 +10,81 @@ classes: {
     shape: stored_data
   }
 }
-user interface: {
-  class: layer
-  SQL\: DuckDB: {
-    class: component
-  }
-  dataframes\: polars: {
-    class: component
-  }
-}
 
-grid-rows: 3
-lakehouse: {
-  class: layer
-  landing zone: {
-    class: zone
-  }
-  reconciliation zone: {
-    class: zone
-  }
-  warehouse zone: {
-    class: zone
-  }
-}
-storage: {
-  class: layer
-  object store
-  block device
-  file system
-}
+grid-columns: 4
 
 sources: {
-  near: center-left
+  class: layer
+  grid-rows: 4
+  transactional systems
+  ERP
+  Logs
+  3rd party
 }
 
-sources -> lakehouse
+ingestion: {
+  class: layer
+  grid-rows: 3
+  batch
+  real-time
+  streaming
+}
+
+metadata management: {
+  class: layer
+  grid-columns: 2
+  catalog\: Unity: {
+    class: component
+    link: https://docs.unitycatalog.io/
+  }
+}
+transformation \& loading: {
+  class: layer
+  grid-columns: 2
+  storage: {
+    grid-rows: 3
+    class: layer
+    open table format\: Apache Iceberg
+    open file format\: Apache Parquet
+    object storage\: S3 compatible
+  }
+  compute pipelines: {
+    grid-rows: 4
+    class: layer
+
+    dataframes\: polars: {
+      class: component
+      link: https://pola.rs/
+    }
+    validation\: pydantic: {
+      class: component
+      link: https://docs.pydantic.dev/latest/
+    }
+    workflow\: Hamilton: {
+      class: component
+      link: https://hamilton.dagworks.io/en/latest/
+    }
+    mapping\: FHIRPath: {
+      class: component
+      link: https://github.com/beda-software/FHIRPathMappingLanguage
+    }
+    metrics\: dbt Core: {
+      class: component
+      link: https://docs.getdbt.com/docs/core/installation-overview
+    }
+  }
+}
+
+data access \& retrieval: {
+  class: layer
+  grid-rows: 3
+  API\: FastAPI: {
+    class: component
+    link: https://fastapi.tiangolo.com/
+  }
+  SQL\: DuckDB: {
+    class: component
+    link: https://duckdb.org/
+  }
+  FAIR\: DCAT
+}
