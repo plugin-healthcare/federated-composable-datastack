@@ -1,0 +1,405 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={An open-source reference implementation of a federated composable datastack},
+  pdfauthor={Yannick Vinkesteijn; Daniel Kapitan},
+  pdfkeywords={data engineering, lakehouse, Apache Arrow, Apache
+Parquet, Apache Icebert, duckdb, polars},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{An open-source reference implementation of a federated composable
+datastack}
+\author{Yannick Vinkesteijn \and Daniel Kapitan}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We describe \ldots{}
+\end{abstract}
+
+
+(intented for publication in something like a \emph{practice} paper in
+\href{https://cacm.acm.org/author-guidelines/\#CACMsubmission}{Communications
+of ACM})
+
+\subsection{A confluence of developments towards federated analytical
+data
+systems}\label{a-confluence-of-developments-towards-federated-analytical-data-systems}
+
+We observe a confluence of various trends into what we call federated
+analytics data systems(FADS). In Europe, ongoing effort to implement
+data spaces in various industries, including mobility, healthcare and
+energy. Given the need for secure and trustworthy data sharing, much
+work is underway to design and implement FADS On the user side, we see
+that trends such as data spaces. At the same time, the computer science
+and engineering has development couple of new concepts and technologies
+that make it easier to implement FADS:
+
+\begin{itemize}
+\tightlist
+\item
+  A data mesh has been developed as an alternative to centralized data
+  warehouse systems. Data mesh conceptualizes data as a product which
+  can be consumed through an application programming interface (API).
+  Although originally coined in the context of enterprise data
+  platforms, it can be readily extend beyond the boundaries of a single
+  organization into a data space
+\item
+  Capabilities of edge computing and single-node computing has increased
+  significantly, whereby it is now possible to process up to 1 TB of
+  tabular data on a single node
+\item
+  The composable data stack provides a way to unbundle the venerable
+  data base into loosely components, thereby making it easier and more
+  practical to implement FADS
+\item
+  The increasing need for privacy-enhancing technologies (PETs)
+  additionally fuels the development of FADS-related technologies, where
+  technologies such as secure multi-party computation (MPC) are now
+  sufficiently mature to be used on an industrial scale.
+\item
+  Federated machine learming (or federated learning in short) has
+  matured as a means for decentralized training of predictive models,
+  most notable through weights sharing of deep learning networks
+\end{itemize}
+
+As noted by Perreira et
+al.~(\href{https://dl.acm.org/doi/10.14778/3603581.3603604}{2023}),
+however:
+
+\begin{quote}
+The requirement for specialization in data management systems has
+evolved faster than our software development practices. After decades of
+organic growth, this situation has created a siloed landscape composed
+of hundreds of products developed and maintained as monoliths, with
+limited reuse between systems. This fragmentation has resulted in
+developers often reinventing the wheel, increased maintenance costs, and
+slowed down innovation. It has also affected the end users, who are
+often required to learn the idiosyncrasies of dozens of incompatible SQL
+and non-SQL API dialects, and settle for systems with incomplete
+functionality and inconsistent semantics.
+\end{quote}
+
+This paper rises to their call to take a principled, open source
+approach to FADS aimed at ``\ldots standardizing different aspects of
+the data stack (\ldots) advocating for a paradigm shift in how data
+management systems are designed'', focusing on federated analytics data
+systems.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  functional architecture and specification of FADS that integrates
+  various common practices and blueprints from the data engineering
+  community;
+\item
+  a reference implementation in the Python-Rust data stack that is
+  quickly emerging as a new \emph{de facto} standard for performant and
+  reliable analytical processing;
+\item
+  implementation of functionality specific to healthcare, which provided
+  the impetus for this work (kapitan2025data).
+\end{enumerate}
+
+\subsection{Desiderata of analytical data
+systems}\label{desiderata-of-analytical-data-systems}
+
+We take Klepmann (2017) as our starting point, who states that ``Many
+applications today are~\emph{data-intensive}, as opposed
+to~\emph{compute-intensive}.~Raw CPU power is rarely a limiting factor
+for these applications---bigger problems are usually the amount of data,
+the complexity of data, and the speed at which it is changing.''
+
+Generically, we want:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3491}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2925}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3585}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Reliability
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Scalability
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Maintainability
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+tolerating hardware \& software vaults & Measuring load \& performance &
+Operability, simplicity \& evolvability \\
+human error & Latency percentiles, throughput & \\
+\end{longtable}
+
+We focus on analytical data systems, with different patterns from
+transactional data systems.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Property
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Transaction processing systems (OLTP)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Analytic systems (OLAP)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Main read pattern & Small number of records per query, fetched by key &
+Aggregate over large number of records \\
+Main write pattern & Random-access, low-latency writes from user input &
+Bulk import (ETL) or event stream \\
+Primarily used by & End user/customer, via web application & Internal
+analyst, for decision support \\
+What data represents & Latest state of data (current point in time) &
+History of events that happened over time \\
+Dataset size & Gigabytes to terabytes & Terabytes to petabytes \\
+\end{longtable}
+
+\subsection{Design principles of analytical data
+systems}\label{design-principles-of-analytical-data-systems}
+
+These functional requirements lead us to the following design principles
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Colum-oriented storage and memory layout:} Apache Arrow
+  ecosystem, including Apache Flight
+\item
+  \textbf{Late-binding with logical data models most suited for
+  analytics:} ELT pattern with zonal architecture
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{staging zone:} hard business rules (does incoming data comply
+    to syntactic standard), change data capture
+  \item
+    \emph{linkage \& conformity zone:} concept-oriented tables,
+    typically following a data vault modeling principle, ascertain
+    referential integrity across resources, with tables per concept and
+    linking tables. Mapping to coding systems.
+  \item
+    \emph{consumption zone:} convenient standardized views like an event
+    table (patient journey, layout for process mining) and
+    dimenreferention integrity across star schema
+  \end{itemize}
+\end{itemize}
+
+\subsection{Reference implementation with current open source software
+(OSS)
+components}\label{reference-implementation-with-current-open-source-software-oss-components}
+
+At the lower, technical, levels we follow the rationale of the
+composable data stack - Python and SQL(-like) languages as the \emph{de
+facto} standard for analytical processing i.e.~the most commonly used
+analytical scripting languages. Where necessary, using Intermediate
+Representations (IR), any analytical query can be transpiled to the
+target engine of choice - Single-node compute capable of efficiently
+processing up to 1 TB of data within tens of seconds (polars, DuckDB),
+so we do away with distributed processing - Open table formats (Iceberg,
+Hudi, Delta) and open file formats (parquet, AVRO)
+
+\subsection{Bringing it all together for federated analytics \& machine
+learning
+(FAML)}\label{bringing-it-all-together-for-federated-analytics-machine-learning-faml}
+
+\begin{itemize}
+\tightlist
+\item
+  Local data stations are conceptualized as serverless lakehouses
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Local ELT pipelines
+  \item
+    Decentralized (pre-)processing, including quality control upon
+    ingest
+  \item
+    \ldots{}
+  \end{itemize}
+\item
+  For horizontally partioned data, we can apply FAML techniques where
+  only aggregated results are combined centrally
+\item
+  For vertically partitioned data, we need an intermediate/temporary
+  zone for linking the data
+\item
+  For both horizontally and vertically partitioned data, we can choose
+  to add PETs, most specifically MPC, as an extra security measure
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Horizontally partitioned data:
+    \href{https://rosemanlabs.com/en/blogs/privacy-safe-federated-learning}{one-short
+    FL}
+  \item
+    Vertically partitioned data: linkage in the blind
+  \end{itemize}
+\item
+  standardized approach to mapppings
+\end{itemize}
+
+
+
+
+\end{document}

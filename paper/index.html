@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -25,7 +25,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -50,10 +49,10 @@ div.csl-indent {
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-364259216be27b2f6cb05ba9d6bbdad0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-890c869dbf3a416b21999c83a8b37bb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <!-- This is what works with Quarto -->
 <script>
   MathJax = {
@@ -65,8 +64,6 @@ div.csl-indent {
   };
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta name="citation_title" content="An open-source reference implementation of a federated composable datastack">
 <meta name="citation_abstract" content="We describe ...
@@ -94,11 +91,11 @@ div.csl-indent {
     <h2 id="toc-title">Document Sections</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#paper-overview" id="toc-paper-overview" class="nav-link" data-scroll-target="#paper-overview">Paper overview</a></li>
-  </ul></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#a-confluence-of-developments-towards-federated-analytical-data-systems" id="toc-a-confluence-of-developments-towards-federated-analytical-data-systems" class="nav-link active" data-scroll-target="#a-confluence-of-developments-towards-federated-analytical-data-systems">A confluence of developments towards federated analytical data systems</a></li>
+  <li><a href="#desiderata-of-analytical-data-systems" id="toc-desiderata-of-analytical-data-systems" class="nav-link" data-scroll-target="#desiderata-of-analytical-data-systems">Desiderata of analytical data systems</a></li>
+  <li><a href="#design-principles-of-analytical-data-systems" id="toc-design-principles-of-analytical-data-systems" class="nav-link" data-scroll-target="#design-principles-of-analytical-data-systems">Design principles of analytical data systems</a></li>
+  <li><a href="#reference-implementation-with-current-open-source-software-oss-components" id="toc-reference-implementation-with-current-open-source-software-oss-components" class="nav-link" data-scroll-target="#reference-implementation-with-current-open-source-software-oss-components">Reference implementation with current open source software (OSS) components</a></li>
+  <li><a href="#bringing-it-all-together-for-federated-analytics-machine-learning-faml" id="toc-bringing-it-all-together-for-federated-analytics-machine-learning-faml" class="nav-link" data-scroll-target="#bringing-it-all-together-for-federated-analytics-machine-learning-faml">Bringing it all together for federated analytics &amp; machine learning (FAML)</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>Typst (ieee)</a></li></ul></div></nav>
 </div>
@@ -186,23 +183,136 @@ div.csl-indent {
 
 
 <div class="quarto-body-content">
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Scientific writing is a crucial part of the research process, allowing researchers to share their findings with the wider scientific community. However, the process of typesetting scientific documents can often be a frustrating and time-consuming affair, particularly when using outdated tools such as LaTeX. Despite being over 30 years old, it remains a popular choice for scientific writing due to its power and flexibility. However, it also comes with a steep learning curve, complex syntax, and long compile times, leading to frustration and despair for many researchers. <span class="citation" data-cites="netwok2020">Astley and Morris (<a href="#ref-netwok2020" role="doc-biblioref">2020</a>)</span></p>
-<section id="paper-overview" class="level3">
-<h3 class="anchored" data-anchor-id="paper-overview">Paper overview</h3>
-<p>In this paper we introduce Typst, a new typesetting system designed to streamline the scientific writing process and provide researchers with a fast, efficient, and easy-to-use alternative to existing systems. Our goal is to shake up the status quo and offer researchers a better way to approach scientific writing.</p>
-<p>By leveraging advanced algorithms and a user-friendly interface, Typst offers several advantages over existing typesetting systems, including faster document creation, simplified syntax, and increased ease-of-use.</p>
-<p>To demonstrate the potential of Typst, we conducted a series of experiments comparing it to other popular typesetting systems, including LaTeX. Our findings suggest that Typst offers several benefits for scientific writing, particularly for novice users who may struggle with the complexities of LaTeX. Additionally, we demonstrate that Typst offers advanced features for experienced users, allowing for greater customization and flexibility in document creation.</p>
-<p>Overall, we believe that Typst represents a significant step forward in the field of scientific writing and typesetting, providing researchers with a valuable tool to streamline their workflow and focus on what really matters: their research. In the following sections, we will introduce Typst in more detail and provide evidence for its superiority over other typesetting systems in a variety of scenarios.</p>
+<p>(intented for publication in something like a <em>practice</em> paper in <a href="https://cacm.acm.org/author-guidelines/#CACMsubmission">Communications of ACM</a>)</p>
+<section id="a-confluence-of-developments-towards-federated-analytical-data-systems" class="level2">
+<h2 class="anchored" data-anchor-id="a-confluence-of-developments-towards-federated-analytical-data-systems">A confluence of developments towards federated analytical data systems</h2>
+<p>We observe a confluence of various trends into what we call federated analytics data systems(FADS). In Europe, ongoing effort to implement data spaces in various industries, including mobility, healthcare and energy. Given the need for secure and trustworthy data sharing, much work is underway to design and implement FADS On the user side, we see that trends such as data spaces. At the same time, the computer science and engineering has development couple of new concepts and technologies that make it easier to implement FADS:</p>
+<ul>
+<li>A data mesh has been developed as an alternative to centralized data warehouse systems. Data mesh conceptualizes data as a product which can be consumed through an application programming interface (API). Although originally coined in the context of enterprise data platforms, it can be readily extend beyond the boundaries of a single organization into a data space</li>
+<li>Capabilities of edge computing and single-node computing has increased significantly, whereby it is now possible to process up to 1 TB of tabular data on a single node</li>
+<li>The composable data stack provides a way to unbundle the venerable data base into loosely components, thereby making it easier and more practical to implement FADS</li>
+<li>The increasing need for privacy-enhancing technologies (PETs) additionally fuels the development of FADS-related technologies, where technologies such as secure multi-party computation (MPC) are now sufficiently mature to be used on an industrial scale.</li>
+<li>Federated machine learming (or federated learning in short) has matured as a means for decentralized training of predictive models, most notable through weights sharing of deep learning networks</li>
+</ul>
+<p>As noted by Perreira et al.&nbsp;(<a href="https://dl.acm.org/doi/10.14778/3603581.3603604">2023</a>), however:</p>
+<blockquote class="blockquote">
+<p>The requirement for specialization in data management systems has evolved faster than our software development practices. After decades of organic growth, this situation has created a siloed landscape composed of hundreds of products developed and maintained as monoliths, with limited reuse between systems. This fragmentation has resulted in developers often reinventing the wheel, increased maintenance costs, and slowed down innovation. It has also affected the end users, who are often required to learn the idiosyncrasies of dozens of incompatible SQL and non-SQL API dialects, and settle for systems with incomplete functionality and inconsistent semantics.</p>
+</blockquote>
+<p>This paper rises to their call to take a principled, open source approach to FADS aimed at “…standardizing different aspects of the data stack (…) advocating for a paradigm shift in how data management systems are designed”, focusing on federated analytics data systems.</p>
+<ol type="1">
+<li>functional architecture and specification of FADS that integrates various common practices and blueprints from the data engineering community;</li>
+<li>a reference implementation in the Python-Rust data stack that is quickly emerging as a new <em>de facto</em> standard for performant and reliable analytical processing;</li>
+<li>implementation of functionality specific to healthcare, which provided the impetus for this work (kapitan2025data).</li>
+</ol>
 </section>
+<section id="desiderata-of-analytical-data-systems" class="level2">
+<h2 class="anchored" data-anchor-id="desiderata-of-analytical-data-systems">Desiderata of analytical data systems</h2>
+<p>We take Klepmann (2017) as our starting point, who states that “Many applications today are&nbsp;<em>data-intensive</em>, as opposed to&nbsp;<em>compute-intensive</em>.&nbsp;Raw CPU power is rarely a limiting factor for these applications—bigger problems are usually the amount of data, the complexity of data, and the speed at which it is changing.”</p>
+<p>Generically, we want:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 29%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Reliability</th>
+<th>Scalability</th>
+<th>Maintainability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>tolerating hardware &amp; software vaults</td>
+<td>Measuring load &amp; performance</td>
+<td>Operability, simplicity &amp; evolvability</td>
+</tr>
+<tr class="even">
+<td>human error</td>
+<td>Latency percentiles, throughput</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>We focus on analytical data systems, with different patterns from transactional data systems.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Transaction processing systems (OLTP)</th>
+<th>Analytic systems (OLAP)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Main read pattern</td>
+<td>Small number of records per query, fetched by key</td>
+<td>Aggregate over large number of records</td>
+</tr>
+<tr class="even">
+<td>Main write pattern</td>
+<td>Random-access, low-latency writes from user input</td>
+<td>Bulk import (ETL) or event stream</td>
+</tr>
+<tr class="odd">
+<td>Primarily used by</td>
+<td>End user/customer, via web application</td>
+<td>Internal analyst, for decision support</td>
+</tr>
+<tr class="even">
+<td>What data represents</td>
+<td>Latest state of data (current point in time)</td>
+<td>History of events that happened over time</td>
+</tr>
+<tr class="odd">
+<td>Dataset size</td>
+<td>Gigabytes to terabytes</td>
+<td>Terabytes to petabytes</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus dictum leo, vel molestie felis hendrerit at. In diam nisl, rhoncus dapibus facilisis at, laoreet ac nunc. Sed vehicula metus id faucibus tempus. Etiam at laoreet orci, mattis efficitur sem. Aenean eu malesuada nisl. Mauris tempor pulvinar magna, eu tempus felis aliquet nec. In nec iaculis nisi. Fusce at arcu enim. In ipsum massa, pretium vitae pharetra in, vulputate vel felis.</p>
-<p><span class="math inline">\(a + b = gamma\)</span></p>
-<p>Mauris egestas laoreet aliquam. Integer non convallis risus. Ut eu felis ut augue ultricies tempus. Integer posuere lacinia ex, ac sollicitudin tortor tempus id. Morbi dictum elit at orci accumsan, vitae volutpat dui scelerisque. Pellentesque vitae lectus id nisl posuere placerat pharetra nec ligula. Donec laoreet ligula hendrerit velit tempus porttitor. Vivamus eleifend imperdiet magna quis pellentesque. Pellentesque blandit congue nisi ac ultricies. Sed velit ante, pretium nec facilisis ac, ultricies vitae orci. In hac habitasse platea dictumst. Phasellus massa mauris, tincidunt sed facilisis eu, venenatis a leo.</p>
-<p>Fusce id risus mauris. Morbi tincidunt interdum odio, a laoreet sem pulvinar condimentum. Integer suscipit lobortis quam vitae hendrerit. Duis nec convallis mi. Etiam cursus felis eget sem tincidunt, at vulputate urna mattis. Aenean nec libero condimentum, posuere tellus eget, ultrices dui. In quis magna ac metus facilisis porta. Integer et massa dignissim, tempus massa quis, feugiat ante. Aliquam a tortor ligula. Praesent aliquam, lorem id ullamcorper rutrum, nunc orci posuere nulla, id fermentum mi erat a justo. Sed ut sapien vulputate, elementum ante ac, maximus lorem. Phasellus metus est, ultricies et ipsum ac, volutpat lobortis turpis. Vestibulum accumsan elementum vehicula.</p>
+<section id="design-principles-of-analytical-data-systems" class="level2">
+<h2 class="anchored" data-anchor-id="design-principles-of-analytical-data-systems">Design principles of analytical data systems</h2>
+<p>These functional requirements lead us to the following design principles</p>
+<ul>
+<li><strong>Colum-oriented storage and memory layout:</strong> Apache Arrow ecosystem, including Apache Flight</li>
+<li><strong>Late-binding with logical data models most suited for analytics:</strong> ELT pattern with zonal architecture
+<ul>
+<li><em>staging zone:</em> hard business rules (does incoming data comply to syntactic standard), change data capture</li>
+<li><em>linkage &amp; conformity zone:</em> concept-oriented tables, typically following a data vault modeling principle, ascertain referential integrity across resources, with tables per concept and linking tables. Mapping to coding systems.</li>
+<li><em>consumption zone:</em> convenient standardized views like an event table (patient journey, layout for process mining) and dimenreferention integrity across star schema</li>
+</ul></li>
+</ul>
+</section>
+<section id="reference-implementation-with-current-open-source-software-oss-components" class="level2">
+<h2 class="anchored" data-anchor-id="reference-implementation-with-current-open-source-software-oss-components">Reference implementation with current open source software (OSS) components</h2>
+<p>At the lower, technical, levels we follow the rationale of the composable data stack - Python and SQL(-like) languages as the <em>de facto</em> standard for analytical processing i.e.&nbsp;the most commonly used analytical scripting languages. Where necessary, using Intermediate Representations (IR), any analytical query can be transpiled to the target engine of choice - Single-node compute capable of efficiently processing up to 1 TB of data within tens of seconds (polars, DuckDB), so we do away with distributed processing - Open table formats (Iceberg, Hudi, Delta) and open file formats (parquet, AVRO)</p>
+</section>
+<section id="bringing-it-all-together-for-federated-analytics-machine-learning-faml" class="level2">
+<h2 class="anchored" data-anchor-id="bringing-it-all-together-for-federated-analytics-machine-learning-faml">Bringing it all together for federated analytics &amp; machine learning (FAML)</h2>
+<ul>
+<li>Local data stations are conceptualized as serverless lakehouses
+<ul>
+<li>Local ELT pipelines</li>
+<li>Decentralized (pre-)processing, including quality control upon ingest</li>
+<li>…</li>
+</ul></li>
+<li>For horizontally partioned data, we can apply FAML techniques where only aggregated results are combined centrally</li>
+<li>For vertically partitioned data, we need an intermediate/temporary zone for linking the data</li>
+<li>For both horizontally and vertically partitioned data, we can choose to add PETs, most specifically MPC, as an extra security measure
+<ul>
+<li>Horizontally partitioned data: <a href="https://rosemanlabs.com/en/blogs/privacy-safe-federated-learning">one-short FL</a></li>
+<li>Vertically partitioned data: linkage in the blind</li>
+</ul></li>
+<li>standardized approach to mapppings</li>
+</ul>
 </section>
 </div>
 
@@ -247,10 +357,8 @@ div.csl-indent {
     </div>
     <div id="collapse-references" class="accordion-body collapse" aria-labelledby="heading-references" data-bs-parent="#quarto-accordion" role="tabpanel">
       <section id="references" class="accordion-references">
-        <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-        <div id="ref-netwok2020" class="csl-entry" role="listitem">
-        Astley, Rick, and Linda Morris. 2020. <span>“At-Scale Impact of the <span>Net Wok</span>: A Culinarically Holistic Investigation of Distributed Dumplings.”</span> <em>Armenian Journal of Proceedings</em> 61: 192–219.
-        </div>
+        <div id="refs" role="list">
+
         </div>
       </section>
     </div>
