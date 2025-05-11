@@ -11,42 +11,57 @@ classes: {
   }
 }
 
-grid-columns: 4
-
-sources: {
-  class: layer
-  grid-rows: 4
-  transactional systems
-  ERP
-  Logs
-  3rd party
-}
+grid-columns: 3
 
 ingestion: {
   class: layer
   grid-rows: 3
-  batch
+  batch\: dlt: {
+    class: component
+    link: https://dlthub.com/docs/intro
+  }
   real-time
   streaming
 }
 
-metadata management: {
-  class: layer
-  grid-columns: 2
-  catalog\: Unity: {
-    class: component
-    link: https://docs.unitycatalog.io/
-  }
-}
 transformation \& loading: {
   class: layer
-  grid-columns: 2
+  grid-rows: 2
+  lakehouse zones: {
+    class: layer
+    grid-columns: 3
+    landing: {
+      class: zone
+    }
+    reconciliation: {
+      class: zone
+    }
+    warehouse: {
+      class: zone
+    }
+  }
+  metadata management: {
+    class: layer
+    grid-columns: 2
+    catalog\: Unity: {
+      class: component
+      link: https://docs.unitycatalog.io/
+    }
+  }
   storage: {
     grid-rows: 3
     class: layer
-    open table format\: Apache Iceberg
-    open file format\: Apache Parquet
+    open table format\: pyiceberg: {
+      class: component
+      link: https://py.iceberg.apache.org/
+    }
+    open file format\: PyArrow: {
+      class: component
+      link: https://arrow.apache.org/docs/python/index.html
+    }
     object storage\: S3 compatible
+    object storage\: S3 compatible <-> open file format\: PyArrow
+    open file format\: PyArrow <-> open table format\: pyiceberg
   }
   compute pipelines: {
     grid-rows: 4
@@ -54,7 +69,7 @@ transformation \& loading: {
 
     dataframes\: polars: {
       class: component
-      link: https://pola.rs/
+      link: https://docs.pola.rs/
     }
     validation\: pydantic: {
       class: component
