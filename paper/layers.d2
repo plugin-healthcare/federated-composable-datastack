@@ -10,38 +10,96 @@ classes: {
     shape: stored_data
   }
 }
-user interface: {
+
+grid-columns: 3
+
+ingestion: {
   class: layer
+  grid-rows: 3
+  batch\: dlt: {
+    class: component
+    link: https://dlthub.com/docs/intro
+  }
+  real-time
+  streaming
+}
+
+transformation \& loading: {
+  class: layer
+  grid-rows: 2
+  lakehouse zones: {
+    class: layer
+    grid-columns: 3
+    landing: {
+      class: zone
+    }
+    reconciliation: {
+      class: zone
+    }
+    warehouse: {
+      class: zone
+    }
+  }
+  metadata management: {
+    class: layer
+    grid-columns: 2
+    catalog\: Unity: {
+      class: component
+      link: https://docs.unitycatalog.io/
+    }
+  }
+  storage: {
+    grid-rows: 3
+    class: layer
+    open table format\: pyiceberg: {
+      class: component
+      link: https://py.iceberg.apache.org/
+    }
+    open file format\: PyArrow: {
+      class: component
+      link: https://arrow.apache.org/docs/python/index.html
+    }
+    object storage\: S3 compatible
+    object storage\: S3 compatible <-> open file format\: PyArrow
+    open file format\: PyArrow <-> open table format\: pyiceberg
+  }
+  compute pipelines: {
+    grid-rows: 4
+    class: layer
+
+    dataframes\: polars: {
+      class: component
+      link: https://docs.pola.rs/
+    }
+    validation\: pydantic: {
+      class: component
+      link: https://docs.pydantic.dev/latest/
+    }
+    workflow\: Hamilton: {
+      class: component
+      link: https://hamilton.dagworks.io/en/latest/
+    }
+    mapping\: FHIRPath: {
+      class: component
+      link: https://github.com/beda-software/FHIRPathMappingLanguage
+    }
+    metrics\: dbt Core: {
+      class: component
+      link: https://docs.getdbt.com/docs/core/installation-overview
+    }
+  }
+}
+
+data access \& retrieval: {
+  class: layer
+  grid-rows: 3
+  API\: FastAPI: {
+    class: component
+    link: https://fastapi.tiangolo.com/
+  }
   SQL\: DuckDB: {
     class: component
+    link: https://duckdb.org/
   }
-  dataframes\: polars: {
-    class: component
-  }
+  FAIR\: DCAT
 }
-
-grid-rows: 3
-lakehouse: {
-  class: layer
-  landing zone: {
-    class: zone
-  }
-  reconciliation zone: {
-    class: zone
-  }
-  warehouse zone: {
-    class: zone
-  }
-}
-storage: {
-  class: layer
-  object store
-  block device
-  file system
-}
-
-sources: {
-  near: center-left
-}
-
-sources -> lakehouse
