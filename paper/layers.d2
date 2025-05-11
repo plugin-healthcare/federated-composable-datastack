@@ -1,0 +1,47 @@
+classes: {
+  layer: {
+    label.near: outside-top-left
+    style.border-radius: 5
+  }
+  component: {
+    shape: package
+  }
+  zone: {
+    shape: stored_data
+  }
+}
+user interface: {
+  class: layer
+  SQL\: DuckDB: {
+    class: component
+  }
+  dataframes\: polars: {
+    class: component
+  }
+}
+
+grid-rows: 3
+lakehouse: {
+  class: layer
+  landing zone: {
+    class: zone
+  }
+  reconciliation zone: {
+    class: zone
+  }
+  warehouse zone: {
+    class: zone
+  }
+}
+storage: {
+  class: layer
+  object store
+  block device
+  file system
+}
+
+sources: {
+  near: center-left
+}
+
+sources -> lakehouse
